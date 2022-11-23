@@ -46,8 +46,10 @@ export function draw(canvas: Ref<CanvasRenderingContext2D | null>, p: Waveform) 
     ctx.strokeStyle = color
     ctx.beginPath()
     for (;x < to;x++) {
-      ctx.moveTo(x, peaks[x][0])
-      ctx.lineTo(x, peaks[x][1])
+      if (x % 2 == 0) {
+        ctx.moveTo(x, peaks[x][0])
+        ctx.lineTo(x, peaks[x][1])
+      }
     }
     ctx.stroke()
     return x
